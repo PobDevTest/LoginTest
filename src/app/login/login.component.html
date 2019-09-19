@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form #loginForm="ngForm" (ngSubmit)="onCreatePost(loginForm.value);onSubmit()">
+            <div class="row">
+                <br><br><br><br><br><br><br>
+                <div>
+                    <h1 id="loginHeader" class="text-center font-weight-bold text-danger">Login</h1>
+                </div>
+                <br>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 form-group ">
+                    <label for="name">Username</label>
+                    <br>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="loginUsername" 
+                    placeholder="TeamWeikun@Gmail.com"
+                    required
+                    ngModel
+                    name="loginUsername">
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 form-group">
+                    <label for="amount">Password</label>
+                    
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="loginPassword"
+                    placeholder="Password"
+                    required
+                    ngModel
+                    name="loginPassword">
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+           
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <button id="loginButton" class="btn btn-danger" type="submit">Login</button>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                        <label class="form-check-label" for="dropdownCheck">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <button 
+                    id="signupButton" 
+                    class="btn btn-danger" 
+                    type="submit" 
+                    >Sign up
+                </button>
+                    <a class="dropdown-item" href="#">Forgot password?</a>    
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

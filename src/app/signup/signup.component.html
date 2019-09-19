@@ -1,0 +1,144 @@
+<div class="container">
+    <div class="row">
+        <br><br><br><br><br><br><br>
+        <div>
+            <h1 id="signupHeader" class="text-center font-weight-bold text-danger">Sign Up</h1>
+        </div>
+        <br>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form  #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value);onSubmit(postForm)">
+                
+                    <div class="form-group col-md-6 mb-3">
+                        <label>First name</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="firstname" 
+                        placeholder="First name" 
+                        ngModel
+                        required
+                        name="firstname" 
+                                                                
+                        >
+                        <span 
+            *ngIf="!signupForm.get('firstname').valid && signupForm.get('firstname').touched  "
+            class="help-block">Please enter your first name!</span>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label>Last name</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="lastname" 
+                        placeholder="Last name" 
+                        ngModel
+                        required
+                        name="lastname">
+                        
+                        <div class="valid-feedback">
+
+                        </div>
+                    </div>
+                
+
+
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label>Username</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+
+                            </div>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            id="username" 
+                            placeholder="Username"
+                            ngModel 
+                            required
+                            name="username">
+                            <div class="invalid-feedback">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label >Email</label>
+                            <input 
+                            type="email" 
+                            class="form-control" 
+                            id="signupEmail" 
+                            placeholder="Email" 
+                            ngModel
+                            required
+                            email
+                            name="signupEmail">
+                            <!-- <div *ngIf="email.errors.required">
+                                Proper email is required
+                              </div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label>Password</label>
+                        <input 
+                        type="password" 
+                        class="form-control" 
+                        id="signupPassword" 
+                        placeholder="Password" 
+                        ngModel
+                        required
+                        name="signupPassword">
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label >Confirm Password</label>
+                        <input 
+                        type="password" 
+                        class="form-control" 
+                        id="confirmPassword" 
+                        placeholder="Confirm Password"
+                        ngModel 
+                        required
+                        name="confirmPassword"
+                        >
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Remember Me
+                        </label>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+                </div>
+                <button 
+                id="signupFormButton" 
+                class="btn btn-primary" 
+                type="submit"
+                [disabled]="!postForm.valid"
+                >Submit form</button>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>

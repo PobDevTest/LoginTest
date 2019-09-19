@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthenticationService, UserService } from './_services';
 import { AuthGuard } from './_guards';
+import { AlertService } from './_services/alert.service';
+import { routing } from './app.routing';
 // import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
@@ -23,11 +25,12 @@ import { AuthGuard } from './_guards';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    routing
   ],
   providers: [
     AuthGuard,
-    
+    AlertService,
     AuthenticationService,
     UserService],
   bootstrap: [AppComponent]

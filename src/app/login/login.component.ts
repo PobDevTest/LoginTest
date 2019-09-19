@@ -40,18 +40,19 @@ this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
+    get formFieldsGetter() { return this.loginForm.controls; }
 
   onSubmit() {
     this.submitted = true;
-
+console.log("onSubmit executing...")
         // stop here if form is invalid
         if (this.loginForm.invalid) {
+          console.log("Submission failed!")
             return;
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
+        this.authenticationService.login(this.formFieldsGetter.username.value, this.formFieldsGetter.password.value)
             .pipe(first())
             .subscribe(
                 data => {
@@ -79,6 +80,7 @@ this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
         postData
       )
       .subscribe(responseData => {
+        console.log("The following is response data")
         console.log(responseData);
       });
   }

@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   //added vars
   loading = false;
-    submitted = false;
-    returnUrl: string;
+  submitted = false;
+  returnUrl: string;
 
   constructor(private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       ngOnInit() {
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
-            password: ['', Validators.required]
+            password: ['', [Validators.required, Validators.minLength(6)]],
         });
 
         // reset login status
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
-    // convenience getter for easy access to form fields
+    // Getter for easy access to form fields
     get formFieldsGetter() { return this.loginForm.controls; }
 
   onSubmit() {

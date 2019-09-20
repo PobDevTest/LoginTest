@@ -19,7 +19,7 @@
                         class="form-control" 
                         id="firstname" 
                         placeholder="First name" 
-                        formControlName="firstname" 
+                        formControlName="firstName" 
                         [ngClass]="{ 'is-invalid': submitted && formFieldsGetter.firstName.errors }"                                   
                         >
                         <div *ngIf="submitted && formFieldsGetter.firstName.errors" class="invalid-feedback">
@@ -34,7 +34,7 @@
                         id="lastname" 
                         placeholder="Last name" 
                         [ngClass]="{ 'is-invalid': submitted && formFieldsGetter.lastName.errors }"
-                        formControlName="lastname">      
+                        formControlName="lastName">      
                         <div *ngIf="submitted && formFieldsGetter.lastName.errors" class="invalid-feedback">
                             <div *ngIf="formFieldsGetter.lastName.errors.required">Last Name is required</div>
                         </div>
@@ -91,9 +91,9 @@
                         id="signupPassword" 
                         placeholder="Password" 
                         formControlName="signupPassword"
-                        [ngClass]="{ 'is-invalid': submitted && formFieldsGetter.password.errors }">
-                        <div *ngIf="submitted && formFieldsGetter.password.errors" class="invalid-feedback">
-                            <div *ngIf="formFieldsGetter.password.errors.required">Password is required</div>
+                        [ngClass]="{ 'is-invalid': submitted && formFieldsGetter.signupPassword.errors }">
+                        <div *ngIf="submitted && formFieldsGetter.signupPassword.errors" class="invalid-feedback">
+                            <div *ngIf="formFieldsGetter.signupPassword.errors.required">Password is required</div>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -128,7 +128,7 @@
                 class="btn btn-primary" 
                 type="submit"
                 
-                >Submit form</button>
+                >Register</button>
             </form>
         </div>
         <div class="col-sm-4"></div>

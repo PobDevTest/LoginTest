@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService, AlertService } from '../_services';
 import { first } from 'rxjs/operators';
+import { CustomValidators } from '../customValidators';
 
 @Component({
   selector: 'app-signup',
@@ -24,15 +25,46 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     ) { }
 
+  
+
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       username: ['', Validators.required],
       signupEmail: ['', Validators.required],
-      signupPassword: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-    });
+      signupPassword: ['', Validators.compose([
+        Validators.required,
+        // check whether the entered password has a number
+        CustomValidators.patternValidator(/\d/, {
+          hasNumber: true
+        }),
+        // check whether the entered password has upper case letter
+        CustomValidators.patternValidator(/[A-Z]/, {
+          hasCapitalCase: true
+        }),
+        // check whether the entered password has a lower case letter
+        CustomValidators.patternValidator(/[a-z]/, {
+          hasSmallCase: true
+        }),
+        // check whether the entered password has a special character
+        CustomValidators.patternValidator(
+          /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
+          {
+            hasSpecialCharacters: true
+          }
+        ),
+        Validators.minLength(6)
+      ])
+    ],
+
+   confirmPassword: [null, Validators.compose([Validators.required])]
+      },
+      {
+        // check whether our password and confirm password match
+        validator: CustomValidators.passwordMatchValidator
+      }
+    );
   }
 
   // Getter for easy access to form fields
